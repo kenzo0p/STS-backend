@@ -3,28 +3,28 @@ import mongoose from "mongoose";
 const subscriptionSchema = new mongoose.Schema(
   {
     name: {
-      type: string,
+      type: String,
       required: [true, "Subscription name is required"],
       trim: true,
       minLength: 2,
       maxLength: 50,
     },
     price: {
-      type: number,
+      type: Number,
       required: [true, "Subscription price is required"],
       min: [0, "Subscription price must be greater tha 0"],
     },
     currency: {
-      type: string,
+      type: String,
       enum: ["USD", "INR", "EUR"],
       default: "USD",
     },
     frequency: {
-      type: string,
+      type: String,
       enum: ["daily", "weekly", "monthly", "yearly"],
     },
     category: {
-      type: string,
+      type: String,
       enum: [
         "sports",
         "news",
@@ -38,12 +38,12 @@ const subscriptionSchema = new mongoose.Schema(
       requiredL: true,
     },
     paymentMethod: {
-      type: string,
+      type: String,
       required: true,
       trim: true,
     },
     status: {
-      type: string,
+      type: String,
       enum: ["active", "cancelled", "expired"],
       default: "active",
     },
@@ -57,7 +57,7 @@ const subscriptionSchema = new mongoose.Schema(
     },
     renewalDate: {
       type: Date,
-      required: true,
+      // required: true,
       validate: {
         validator: function (value) {
           return value > this.startDate;
@@ -72,7 +72,7 @@ const subscriptionSchema = new mongoose.Schema(
       index: true,
     },
   },
-  { timeStamps: true }
+  { timestamps: true }
 );
 
 // autocalculate the renewal date if its not provided
