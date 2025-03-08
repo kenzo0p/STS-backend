@@ -5,7 +5,7 @@ const errorMiddleware = (err, req, res, next) => {
         console.error(err);
 
         // mongoose bad object id
-        if(err.name = 'CastError'){
+        if(err.name === 'CastError'){
             const message = 'Resourse not found';
 
             error = new Error(message);
@@ -13,14 +13,14 @@ const errorMiddleware = (err, req, res, next) => {
         }
 
         // mongoose duplicate key
-        if(err.code = 11000){
+        if(err.code === 11000){
             const message = "Duplicate field valud enterd";
             error = new Error(message);
             error.statusCode = 404;
         }
 
         // mongoose validation error
-        if(err.name = 'ValidationError'){
+        if(err.name === 'ValidationError'){
             const message = Object.values(err.errors).map(val => val.message);
             error = new Error(message.join(", "));
             error.statusCode = 400;
