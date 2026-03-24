@@ -272,9 +272,7 @@ Authorization: Bearer <token>
 
 **Category values**
 
-`sports`, `news`, `entertainment`, `lifestyle`, `technology`, `finance`, `poilitics`, `other`
-
-> ⚠️ **Known typo in the schema:** the politics category is stored as `"poilitics"` (two i's). You **must** send this exact string — sending `"politics"` will result in a 400 validation error.
+`sports`, `news`, `entertainment`, `lifestyle`, `technology`, `finance`, `politics`, `other`
 
 **Renewal date auto-calculation**
 
@@ -498,7 +496,7 @@ The workflow halts early if the subscription is cancelled/expired or the renewal
 | `price` | number | >= 0 |
 | `currency` | string | `"USD"` \| `"INR"` \| `"EUR"` |
 | `frequency` | string | `"daily"` \| `"weekly"` \| `"monthly"` \| `"yearly"` |
-| `category` | string | `"sports"` \| `"news"` \| `"entertainment"` \| `"lifestyle"` \| `"technology"` \| `"finance"` \| `"poilitics"` \| `"other"` (**exact strings, note the typo in "poilitics"**) |
+| `category` | string | `"sports"` \| `"news"` \| `"entertainment"` \| `"lifestyle"` \| `"technology"` \| `"finance"` \| `"politics"` \| `"other"` |
 | `paymentMethod` | string | Free text |
 | `status` | string | `"active"` \| `"cancelled"` \| `"expired"` |
 | `startDate` | Date | Must be <= current time (past or present) — schema validator checks `value <= new Date()` |

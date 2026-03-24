@@ -32,10 +32,10 @@ const subscriptionSchema = new mongoose.Schema(
         "lifestyle",
         "technology",
         "finance",
-        "poilitics",
+        "politics",
         "other",
       ],
-      requiredL: true,
+      required: true,
     },
     paymentMethod: {
       type: String,

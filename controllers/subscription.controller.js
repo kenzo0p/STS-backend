@@ -30,7 +30,7 @@ export const getUserSubscription = async (req, res, next) => {
   try {
     // check if the user is the same as the one in the token
     if (req.user.id !== req.params.id) {
-      const error = new ERROR("You are not the owner if this account");
+      const error = new Error("You can only access your own subscriptions");
       error.statusCode = 401;
       throw error;
     }
@@ -93,7 +93,7 @@ export const deleteSubscription = async (req, res, next) => {
 };
 
 
-export const cancelSubscription = async(req,res,nest) => {
+export const cancelSubscription = async(req,res,next) => {
   try {
     const subscription = await Subscription.findOne({
       _id : req.params.id,
